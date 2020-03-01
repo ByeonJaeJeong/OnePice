@@ -16,10 +16,14 @@ import javax.swing.JSpinner;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeListener;
+
+import com.google.gson.Gson;
+
 import javax.swing.event.ChangeEvent;
 
 import java.awt.Rectangle;
 import java.awt.Canvas;
+import javax.swing.JButton;
 
 
 public class ORD extends JFrame{
@@ -567,6 +571,19 @@ public class ORD extends JFrame{
 		gbl_조합정보.rowWeights = new double[]{0.0, 0.0, 0.0};
 		조합정보.setLayout(gbl_조합정보);
 		
+		
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		for(int i=0; i<5; i++){
+			JButton btnNewButton = new JButton("New button"+i);
+		gbc_btnNewButton.fill = GridBagConstraints.BOTH;
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton.gridx = i%5;
+		gbc_btnNewButton.gridy = i/5;
+		조합정보.add(btnNewButton, gbc_btnNewButton);
+		}
+		Gson gson =new Gson();
+		
+		
 		////////////////////////////////////////////////////////////////////////////////////event/////////////////////////////////////////////////////////////
 		ruppi_number.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
@@ -622,7 +639,6 @@ public class ORD extends JFrame{
 				System.out.println(search.toString());
 			}
 		});
-		
 		
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

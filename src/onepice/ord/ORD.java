@@ -3,7 +3,7 @@ package onepice.ord;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-
+import java.awt.color.*;
 import java.awt.Font;
 
 import javax.swing.SwingConstants;
@@ -24,9 +24,16 @@ import javax.swing.event.ChangeEvent;
 import java.awt.Rectangle;
 import java.awt.Canvas;
 import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.ListCellRenderer;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class ORD extends JFrame{
+	private JTextField Search_input;
 
 	
 	public ORD() {
@@ -248,7 +255,7 @@ public class ORD extends JFrame{
 		gbc_unit_name_label.gridy = 0;
 		유닛헤더.add(unit_name_label, gbc_unit_name_label);
 		
-		JLabel unit_name = new JLabel("\uCC9C\uC2E0 \uAE08\uC0AC\uC790 \uC2DC\uD0A4");
+		JLabel unit_name = new JLabel("");
 		unit_name.setFont(font);
 		GridBagConstraints gbc_unit_name = new GridBagConstraints();
 		gbc_unit_name.insets = new Insets(0, 0, 5, 5);
@@ -264,7 +271,7 @@ public class ORD extends JFrame{
 		gbc_unit_rank_label.gridy = 0;
 		유닛헤더.add(unit_rank_label, gbc_unit_rank_label);
 		
-		JLabel unit_rank = new JLabel("\uBD88\uBA78");
+		JLabel unit_rank = new JLabel("");
 		unit_rank.setFont(font);
 		GridBagConstraints gbc_unit_rank = new GridBagConstraints();
 		gbc_unit_rank.insets = new Insets(0, 0, 5, 0);
@@ -280,7 +287,7 @@ public class ORD extends JFrame{
 		gbc_unit_command_label.gridy = 1;
 		유닛헤더.add(unit_command_label, gbc_unit_command_label);
 		
-		JLabel unit_command = new JLabel("\uCC9C\uC2E0 \uAE08\uC0AC\uC790 \uC2DC\uD0A4 ");
+		JLabel unit_command = new JLabel("");
 		unit_command.setFont(font);
 		GridBagConstraints gbc_unit_command = new GridBagConstraints();
 		gbc_unit_command.gridwidth = 3;
@@ -304,7 +311,7 @@ public class ORD extends JFrame{
 		unit_attack_label.setBounds(72, 10, 57, 15);
 		상세정보.add(unit_attack_label);
 		
-		JLabel unit_attack = new JLabel("136001-136004");
+		JLabel unit_attack = new JLabel("");
 		unit_attack.setFont(font);
 		unit_attack.setHorizontalAlignment(SwingConstants.CENTER);
 		unit_attack.setBounds(134, 10, 233, 15);
@@ -315,7 +322,7 @@ public class ORD extends JFrame{
 		unit_speed_label.setBounds(72, 35, 63, 15);
 		상세정보.add(unit_speed_label);
 		
-		JLabel unit_speed = new JLabel("1.01");
+		JLabel unit_speed = new JLabel("");
 		unit_speed.setFont(font);
 		unit_speed.setHorizontalAlignment(SwingConstants.CENTER);
 		unit_speed.setBounds(122, 35, 98, 15);
@@ -326,73 +333,73 @@ public class ORD extends JFrame{
 		unit_attacktype_label.setBounds(235, 35, 57, 15);
 		상세정보.add(unit_attacktype_label);
 		
-		JLabel unit_attacktype = new JLabel("\uCD1D");
+		JLabel unit_attacktype = new JLabel("");
 		unit_attacktype.setFont(font);
 		unit_attacktype.setHorizontalAlignment(SwingConstants.CENTER);
 		unit_attacktype.setBounds(304, 35, 63, 15);
 		상세정보.add(unit_attacktype);
 		
-		JLabel skill1_title = new JLabel("\uD568\uB300");
+		JLabel skill1_title = new JLabel("");
 		skill1_title.setFont(font);
 		skill1_title.setForeground(new Color(0, 51, 255));
 		skill1_title.setHorizontalAlignment(SwingConstants.CENTER);
 		skill1_title.setBounds(12, 59, 133, 15);
 		상세정보.add(skill1_title);
 		
-		JLabel skill1_subtitle = new JLabel("\uC2DC\uD0A4\uC758 \uD568\uB300\uB97C \uD638\uCD9C\uD569\uB2C8\uB2E4.");
+		JLabel skill1_subtitle = new JLabel("");
 		skill1_subtitle.setFont(font);
 		skill1_subtitle.setForeground(new Color(0, 0, 0));
 		skill1_subtitle.setHorizontalAlignment(SwingConstants.CENTER);
 		skill1_subtitle.setBounds(144, 60, 223, 15);
 		상세정보.add(skill1_subtitle);
 		
-		JLabel skill2_title = new JLabel("\uC0AC\uC790:\uCC9C\uC2E0");
+		JLabel skill2_title = new JLabel("");
 		skill2_title.setFont(font);
 		skill2_title.setForeground(new Color(0, 51, 255));
 		skill2_title.setHorizontalAlignment(SwingConstants.CENTER);
 		skill2_title.setBounds(22, 84, 123, 15);
 		상세정보.add(skill2_title);
 		
-		JLabel skill2_subtitle = new JLabel("\uCC9C\uC2E0\uC774\uB77C \uBD88\uB9AC\uAC8C\uB41C \uC2DC\uD0A4\uC785\uB2C8\uB2E4.");
+		JLabel skill2_subtitle = new JLabel("");
 		skill2_subtitle.setFont(font);
 		skill2_subtitle.setHorizontalAlignment(SwingConstants.CENTER);
 		skill2_subtitle.setBounds(144, 84, 223, 15);
 		상세정보.add(skill2_subtitle);
 		
-		JLabel skill3_title = new JLabel("\uCC38\uD30C");
+		JLabel skill3_title = new JLabel("");
 		skill3_title.setFont(font);
 		skill3_title.setForeground(new Color(0, 51, 255));
 		skill3_title.setHorizontalAlignment(SwingConstants.CENTER);
 		skill3_title.setBounds(12, 109, 133, 15);
 		상세정보.add(skill3_title);
 		
-		JLabel skill3_subtitle = new JLabel("\uC591 \uB2E4\uB9AC\uC5D0 \uB2EC\uB9B0 \uCE7C\uC744 \uBE60\uB974\uAC8C \uD718\uB458\uB7EC \uC801\uB4E4\uC744 \uB3C4\uB959\uD569\uB2C8\uB2E4.");
+		JLabel skill3_subtitle = new JLabel("");
 		skill3_subtitle.setFont(font);
 		skill3_subtitle.setHorizontalAlignment(SwingConstants.CENTER);
 		skill3_subtitle.setBounds(144, 109, 235, 15);
 		상세정보.add(skill3_subtitle);
 		
-		JLabel skill4_title = new JLabel("\uB465\uC2E4\uB465\uC2E4 \uC5F4\uB9E4 \uB808\uBCA82");
+		JLabel skill4_title = new JLabel("");
 		skill4_title.setFont(font);
 		skill4_title.setForeground(new Color(0, 51, 255));
 		skill4_title.setHorizontalAlignment(SwingConstants.CENTER);
 		skill4_title.setBounds(12, 134, 133, 15);
 		상세정보.add(skill4_title);
 		
-		JLabel skill4_subtitle = new JLabel("\uB465\uC2E4\uB465\uC2E4\uC5F4\uB9E4\uC758 \uB2A5\uB825\uC744 \uC0AC\uC6A9\uD569\uB2C8\uB2E4.");
+		JLabel skill4_subtitle = new JLabel("");
 		skill4_subtitle.setFont(font);
 		skill4_subtitle.setHorizontalAlignment(SwingConstants.CENTER);
 		skill4_subtitle.setBounds(144, 134, 235, 15);
 		상세정보.add(skill4_subtitle);
 		
-		JLabel skill5_title = new JLabel("\uC0AC\uC790 \uB5A8\uC5B4\uD2B8\uB9AC\uAE30 : \uB208");
+		JLabel skill5_title = new JLabel("");
 		skill5_title.setFont(font);
 		skill5_title.setForeground(new Color(0, 51, 255));
 		skill5_title.setHorizontalAlignment(SwingConstants.CENTER);
 		skill5_title.setBounds(12, 159, 133, 15);
 		상세정보.add(skill5_title);
 		
-		JLabel skill5_subtitle = new JLabel("\uC5EC\uC12F\uBC29\uD5A5\uC5D0\uC11C \uC0AC\uC790\uB97C \uD615\uC131\uD558\uC5EC \uB36E\uCE58\uC5B4 \uD070\uB370\uBBF8\uC9C0\uB97C \uC90D\uB2C8\uB2E4.");
+		JLabel skill5_subtitle = new JLabel("");
 		skill5_subtitle.setFont(font);
 		skill5_subtitle.setHorizontalAlignment(SwingConstants.CENTER);
 		skill5_subtitle.setBounds(144, 159, 235, 15);
@@ -557,30 +564,124 @@ public class ORD extends JFrame{
 		gbc_material_navalgeneral.gridy = 2;
 		재료.add(material_navalgeneral, gbc_material_navalgeneral);
 		
+		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel.setBounds(12, 535, 570, 226);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JPanel Search = new JPanel();
+		Search.setBounds(12, 9, 546, 23);
+		panel.add(Search);
+		Search.setLayout(null);
+		
+		Search_input = new JTextField();
+		Search_input.setBounds(255, 1, 220, 21);
+		Search.add(Search_input);
+		Search_input.setColumns(10);
+		
+		
+		JComboBox Search_rank = new JComboBox();
+		Search_rank.setBounds(0, 1, 73, 21);
+		Search.add(Search_rank);
+		Search_rank.setFont(new Font("굴림", Font.BOLD, 12));
+		Search_rank.setModel(new DefaultComboBoxModel(new String[] {"등급", "안흔함", "특별함", "희귀함","변화됨", "전설", "히든", "제한됨", "초월함", "불멸", "영원"}));
+		Object[] colors={Color.black,Color.green,Color.YELLOW,Color.pink,Color.GRAY,Color.RED,Color.WHITE,Color.BLUE,Color.RED,Color.RED};
+		//Search_rank.setForeground(Color.RED);
+		
+		JComboBox Search_type = new JComboBox();
+		Search_type.setBounds(85, 1, 73, 21);
+		Search.add(Search_type);
+		Search_type.setFont(new Font("굴림", Font.BOLD, 12));
+		Search_type.setModel(new DefaultComboBoxModel(new String[] {"타입", "공성", "총", "칼"}));
+		JComboBox Search_round = new JComboBox();
+		Search_round.setBounds(170, 1, 73, 21);
+		Search.add(Search_round);
+		Search_round.setFont(new Font("굴림", Font.BOLD, 12));
+		Search_round.setModel(new DefaultComboBoxModel(new String[] {"높은순", "낮은순"}));
+		
+		JButton Search_btn = new JButton("검색");
+		Search_btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Champinfo champinfo  =new Champinfo();
+			}
+		});
+		Search_btn.setBounds(481, 0, 65, 23);
+		Search.add(Search_btn);
+		
 		
 		
 		/////////////////////조합 정보 //////////////////////////////
 		JPanel 조합정보 = new JPanel();
-		조합정보.setBorder(new LineBorder(new Color(0, 0, 0)));
-		조합정보.setBounds(10, 535, 572, 226);
-		getContentPane().add(조합정보);
+		조합정보.setBounds(12, 42, 550, 174);
+		panel.add(조합정보);
 		GridBagLayout gbl_조합정보 = new GridBagLayout();
-		gbl_조합정보.columnWidths = new int[] {110, 110, 110, 110, 110};
-		gbl_조합정보.rowHeights = new int[] {50, 50, 50, 50};
-		gbl_조합정보.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0};
-		gbl_조합정보.rowWeights = new double[]{0.0, 0.0, 0.0};
+		gbl_조합정보.columnWidths = new int[] {109, 109, 109, 109, 109};
+		gbl_조합정보.rowHeights = new int[] {57, 57, 57};
+		gbl_조합정보.columnWeights = new double[]{0.0, 0.0};
+		gbl_조합정보.rowWeights = new double[]{0.0};
 		조합정보.setLayout(gbl_조합정보);
 		
 		
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		for(int i=0; i<5; i++){
-			JButton btnNewButton = new JButton("New button"+i);
+		
+		JButton btnNewButton = new JButton("시키");
 		gbc_btnNewButton.fill = GridBagConstraints.BOTH;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton.gridx = i%5;
-		gbc_btnNewButton.gridy = i/5;
+		gbc_btnNewButton.gridx = 0;
+		gbc_btnNewButton.gridy = 0;
 		조합정보.add(btnNewButton, gbc_btnNewButton);
-		}
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				GsonBean gsonBean=Champinfo.champinfo(btnNewButton.getText());
+				unit_name.setText(gsonBean.getName());
+				unit_rank.setText(gsonBean.getRank());
+				unit_attack.setText(gsonBean.getAttack());
+				unit_attacktype.setText(gsonBean.getAttackType());
+				unit_command.setText(gsonBean.getCommand());
+				skill1_title.setText(gsonBean.getSkill1_title());
+				skill1_subtitle.setText(gsonBean.getSkill1_subtitle());
+				skill2_title.setText(gsonBean.getSkill2_title());
+				skill2_subtitle.setText(gsonBean.getSkill2_subtitle());
+				skill3_title.setText(gsonBean.getSkill3_title());
+				skill3_subtitle.setText(gsonBean.getSkill3_subtitle());
+				skill4_title.setText(gsonBean.getSkill4_title());
+				skill4_subtitle.setText(gsonBean.getSkill4_subtitle());
+				skill5_title.setText(gsonBean.getSkill5_title());
+				skill5_subtitle.setText(gsonBean.getSkill5_subtitle());
+			}
+		});
+		JButton btnNewButton1 = new JButton("프랑키");
+		gbc_btnNewButton.fill = GridBagConstraints.BOTH;
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton.gridx = 1;
+		gbc_btnNewButton.gridy = 0;
+		조합정보.add(btnNewButton1, gbc_btnNewButton);
+		btnNewButton1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				GsonBean gsonBean=Champinfo.champinfo(btnNewButton1.getText());
+				unit_name.setText(gsonBean.getName());
+				unit_rank.setText(gsonBean.getRank());
+				unit_attack.setText(gsonBean.getAttack());
+				unit_attacktype.setText(gsonBean.getAttackType());
+				unit_command.setText(gsonBean.getCommand());
+				skill1_title.setText(gsonBean.getSkill1_title());
+				skill1_subtitle.setText(gsonBean.getSkill1_subtitle());
+				skill2_title.setText(gsonBean.getSkill2_title());
+				skill2_subtitle.setText(gsonBean.getSkill2_subtitle());
+				skill3_title.setText(gsonBean.getSkill3_title());
+				skill3_subtitle.setText(gsonBean.getSkill3_subtitle());
+				skill4_title.setText(gsonBean.getSkill4_title());
+				skill4_subtitle.setText(gsonBean.getSkill4_subtitle());
+				skill5_title.setText(gsonBean.getSkill5_title());
+				skill5_subtitle.setText(gsonBean.getSkill5_subtitle());
+			}
+		});
+		
+		
 		Gson gson =new Gson();
 		
 		
@@ -641,22 +742,10 @@ public class ORD extends JFrame{
 		});
 		
 		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		
-		/*for( int i=0; i<4; i++){
-			for( int j =0; j<5;j++){
-				JButton btnNewButton = new JButton("\uCE90\uB9AD\uD130 \uC774\uB984");
-				GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-				gbc_btnNewButton.fill = GridBagConstraints.BOTH;
-				gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-				gbc_btnNewButton.gridx = j;
-				gbc_btnNewButton.gridy = i;
-				조합정보.add(btnNewButton, gbc_btnNewButton);
-				
-			}//출력 x축
-		}//출력 y축
-*/		setVisible(true);
+		
+	setVisible(true);
 
 		}
 }
